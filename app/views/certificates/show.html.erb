@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @certificate.nombre %>
+</p>
+
+<p>
+  <strong>Cedula:</strong>
+  <%= @certificate.cedula %>
+</p>
+
+<p>
+  <strong>Pagaduria:</strong>
+  <%= @certificate.pagaduria %>
+</p>
+
+<p>
+  <strong>No libranza:</strong>
+  <%= @certificate.no_libranza %>
+</p>
+
+<p>
+  <strong>Saldo letras:</strong>
+  <%= @certificate.saldo_letras %>
+</p>
+
+<p>
+  <strong>Saldo numeros:</strong>
+  <%= @certificate.saldo_numeros %>
+</p>
+
+<p>
+  <strong>Cuota letras:</strong>
+  <%= @certificate.cuota_letras %>
+</p>
+
+<p>
+  <strong>Cuota numeros:</strong>
+  <%= @certificate.cuota_numeros %>
+</p>
+
+<p>
+  <strong>Clase cooperativa:</strong>
+  <%= @certificate.clase_cooperativa %>
+</p>
+
+<p>
+  <strong>Fecha vencimiento:</strong>
+  <%= @certificate.fecha_vencimiento %>
+</p>
+
+<%= link_to 'PDF', pdf_report_path(@certificate)%> |
+<%= link_to 'Editar', edit_certificate_path(@certificate) %> |
+<%= link_to 'Regresar', certificates_path %>

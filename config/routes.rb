@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :certificates
   # defaults to dashboard
   root :to => redirect('/dashboard/dashboard_v1')
   
@@ -66,7 +67,7 @@ Rails.application.routes.draw do
   get '/api/i18n/:locale' => 'api#i18n'
   post '/api/xeditable' => 'api#xeditable'
   get '/api/xeditable-groups' => 'api#xeditablegroups'
-
+  get 'certificates/:id/report' => 'certificates#generate_pdf', as: 'pdf_report'
   # the rest goes to root
   get '*path' => redirect('/')
 end

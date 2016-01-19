@@ -4,24 +4,24 @@
       <!-- START sidebar nav-->
       <ul class="nav">
          <!-- START user info-->
-         <li class="has-user-block">
-            <div id="user-block" class="collapse">
-               <div class="item user-block">
-                  <!-- User picture-->
-                  <div class="user-block-picture">
-                     <div class="user-block-status">
-                        <img src="<%= image_path('angle/user/02.jpg') %>" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle" />
-                        <div class="circle circle-success circle-lg"></div>
-                     </div>
-                  </div>
-                  <!-- Name and Job-->
-                  <div class="user-block-info">
-                     <span class="user-block-name">Hello, Mike</span>
-                     <span class="user-block-role">Designer</span>
-                  </div>
-               </div>
-            </div>
-         </li>
+         <!--<li class="has-user-block">-->
+            <!--<div id="user-block" class="collapse">-->
+               <!--<div class="item user-block">-->
+                  <!--&lt;!&ndash; User picture&ndash;&gt;-->
+                  <!--<div class="user-block-picture">-->
+                     <!--<div class="user-block-status">-->
+                        <!--&lt;!&ndash;<img src="<%= image_path('angle/user/02.jpg') %>" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle" />&ndash;&gt;-->
+                        <!--<div class="circle circle-success circle-lg"></div>-->
+                     <!--</div>-->
+                  <!--</div>-->
+                  <!--&lt;!&ndash; Name and Job&ndash;&gt;-->
+                  <!--<div class="user-block-info">-->
+                     <!--<span class="user-block-name">Hello, Mike</span>-->
+                     <!--<span class="user-block-role">Designer</span>-->
+                  <!--</div>-->
+               <!--</div>-->
+            <!--</div>-->
+         <!--</li>-->
          <!-- END user info-->
          <!-- Iterates over all sidebar items-->
          <li class="nav-heading">
@@ -30,7 +30,7 @@
          <li class="<%= 'active' if controller?('dashboard')%>">
             <a href="#dashboard" title="Dashboard" data-toggle="collapse">
                <em class="icon-speedometer"></em>
-               <div class="label label-success pull-right">3</div>
+               <!--<div class="label label-success pull-right">3</div>-->
                <span data-localize="sidebar.nav.DASHBOARD">Dashboard</span>
             </a>
             <ul id="dashboard" class="nav sidebar-subnav collapse">
@@ -46,8 +46,8 @@
          </li>
          <li class="<%= 'active' if controller?('certificates')%>">
           <a href="#certificates" title="Certificados Libranzas" data-toggle="collapse">
-            <em class="icon-speedometer"></em>
-            <div class="label label-success pull-right">3</div>
+            <em class="icon-doc"></em>
+            <div class="label label-success pull-right">2</div>
             <span>Certificados</span>
           </a>
            <ul id="certificates" class="nav sidebar-subnav collapse">
@@ -63,45 +63,6 @@
              </li>
            </ul>
         </li>
-         <li class="<%= 'active' if controller?('pages')%>">
-            <a href="#pages" title="Pages" data-toggle="collapse">
-               <em class="icon-doc"></em>
-               <span data-localize="sidebar.nav.pages.PAGES">Pages</span>
-            </a>
-            <ul id="pages" class="nav sidebar-subnav collapse">
-               <li class="sidebar-subnav-header">Pages</li>
-               <li class="<%= 'active' if controller?('pages') && action?('login') %>">
-                  <a href="/pages/login" title="Login">
-                     <span data-localize="sidebar.nav.pages.LOGIN">Login</span>
-                  </a>
-               </li>
-               <li class="<%= 'active' if controller?('pages') && action?('register') %>">
-                  <a href="/pages/register" title="Sign up">
-                     <span data-localize="sidebar.nav.pages.REGISTER">Sign up</span>
-                  </a>
-               </li>
-               <li class="<%= 'active' if controller?('pages') && action?('recover') %>">
-                  <a href="/pages/recover" title="Recover Password">
-                     <span data-localize="sidebar.nav.pages.RECOVER">Recover Password</span>
-                  </a>
-               </li>
-               <li class="<%= 'active' if controller?('pages') && action?('lock') %>">
-                  <a href="/pages/lock" title="Lock">
-                     <span data-localize="sidebar.nav.pages.LOCK">Lock</span>
-                  </a>
-               </li>
-               <li class="<%= 'active' if controller?('pages') && action?('template') %>">
-                  <a href="/pages/template" title="Starter Template">
-                     <span data-localize="sidebar.nav.pages.STARTER">Starter Template</span>
-                  </a>
-               </li>
-               <li class="<%= 'active' if controller?('pages') && action?('notfound') %>">
-                  <a href="/pages/notfound" title="notfound">
-                     <span>404</span>
-                  </a>
-               </li>
-            </ul>
-         </li>
       </ul>
       <!-- END sidebar nav-->
    </nav>

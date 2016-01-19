@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :certificates
   # defaults to dashboard
-  root :to => redirect('/dashboard/dashboard_v1')
+  root :to => redirect('/dashboard/dashboard_v3')
   
   # view routes
   get '/widgets' => 'widgets#index'

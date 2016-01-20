@@ -8,6 +8,9 @@ class FactoryPDF < Prawn::Document
     @person = certificate_data
     @time = Time.now
     # stroke_axis
+    bounding_box([0, 730], :width => 535, :height => 70) do
+      image "#{Rails.root}/app/assets/images/cooperas/Encabezado.png", width: 535, height: 70
+    end
     bounding_box([20, 730], :width => 490, :height => 730) do
       titulo
       # stroke_axis
@@ -15,6 +18,9 @@ class FactoryPDF < Prawn::Document
       encabezado
       barcode
       fin
+    end
+    bounding_box([0, 35], :width => 535, :height => 35) do
+      image "#{Rails.root}/app/assets/images/cooperas/Pie_de_pagina.png", width: 535, height: 35
     end
   end
 
@@ -67,7 +73,7 @@ class FactoryPDF < Prawn::Document
         text "ENVIAR LA CONSIGNACION O TRANSFERENCIA AL TELEFAX 3375394 Bogotá. Para tramitar el respectivo paz y salvo"
       end
       pad_top(40) do
-        text "@Atentamente,"
+        text "Atentamente,"
       end
       pad_top(20) do
         text "DPTO. DE CARTERA"
@@ -78,7 +84,7 @@ class FactoryPDF < Prawn::Document
       end
     end
 
-    bounding_box([350,15], :width => 130, :height => 20) do
+    bounding_box([350,55], :width => 130, :height => 20) do
       stroke_horizontal_rule
       pad(5) do
         text "FIRMA RECIBIDO", size: 10, :align => :center

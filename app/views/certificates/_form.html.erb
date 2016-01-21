@@ -44,6 +44,10 @@
     <%= f.number_field :cuota_numeros %>
   </div>
   <div class="field">
+    <%= f.label :ultimo_descuento %><br>
+    <%= f.text_field :ultimo_descuento %>
+  </div>
+  <div class="field">
     <%= f.radio_button :clase_cooperativa, 'cooperas', :checked => true %>
     <%= label :clase_cooperativa_cooperas, 'Cooperas' %>
     <%= f.radio_button :clase_cooperativa, 'astv' %>

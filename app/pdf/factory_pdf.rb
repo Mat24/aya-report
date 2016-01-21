@@ -32,9 +32,9 @@ class FactoryPDF < Prawn::Document
   def encabezado
     bounding_box([0, 550], :width => 490, :height => 250) do
       if person.clase_cooperativa == "cooperas"
-        text("COOPERATIVA MULTIACTIVA DE AMIGOS SOLIDARIOS - COOPERAS,NIT 830.510.344-8, certifica que el ( la ) Señor (a) #{@person.nombre.upcase}, identificado (a) con cédula de ciudadanía No. #{number_with_delimiter(@person.cedula)} perteneciente a la pagaduría #{@person.pagaduria.upcase}; tiene un crédito con esta entidad mediante la libranza No.#{@person.no_libranza} con un saldo de #{@person.saldo_letras} PESOS M/CTE. ( #{convert_num(@person.saldo_numeros)} ). El valor de la cuota pactada es de #{@person.cuota_letras} PESOS M/CTE. ( #{convert_num(@person.cuota_numeros)} ).Se toma en cuenta como último descuento a favor de la Cooperativa la cuota del mes de ___________________.", :align => :justify, size: 10)
+        text("COOPERATIVA MULTIACTIVA DE AMIGOS SOLIDARIOS - COOPERAS,NIT 830.510.344-8, certifica que el ( la ) Señor (a) #{@person.nombre.upcase}, identificado (a) con cédula de ciudadanía No. #{number_with_delimiter(@person.cedula)} perteneciente a la pagaduría #{@person.pagaduria.upcase}; tiene un crédito con esta entidad mediante la libranza No.#{@person.no_libranza} con un saldo de #{@person.saldo_letras} PESOS M/CTE. ( #{convert_num(@person.saldo_numeros)} ). El valor de la cuota pactada es de #{@person.cuota_letras} PESOS M/CTE. ( #{convert_num(@person.cuota_numeros)} ).Se toma en cuenta como último descuento a favor de la Cooperativa la cuota del mes de #{@person.ultimo_descuento.upcase}.", :align => :justify, size: 10)
       elsif person.clase_cooperativa == "astv"
-        text("As Televisión As Medios Ltda,NIT 860.509.357-0, certifica que el ( la ) Señor (a) #{@person.nombre.upcase}, identificado (a) con cédula de ciudadanía No. #{number_with_delimiter(@person.cedula)} perteneciente a la pagaduría #{@person.pagaduria.upcase}; tiene un crédito con esta entidad mediante la libranza No.#{@person.no_libranza} con un saldo de #{@person.saldo_letras} PESOS M/CTE. ( #{convert_num(@person.saldo_numeros)} ). El valor de la cuota pactada es de #{@person.cuota_letras} PESOS M/CTE. ( #{convert_num(@person.cuota_numeros)} ).Se toma en cuenta como último descuento a favor de la Cooperativa la cuota del mes de ___________________.", :align => :justify, size: 10)
+        text("As Televisión As Medios Ltda,NIT 860.509.357-0, certifica que el ( la ) Señor (a) #{@person.nombre.upcase}, identificado (a) con cédula de ciudadanía No. #{number_with_delimiter(@person.cedula)} perteneciente a la pagaduría #{@person.pagaduria.upcase}; tiene un crédito con esta entidad mediante la libranza No.#{@person.no_libranza} con un saldo de #{@person.saldo_letras} PESOS M/CTE. ( #{convert_num(@person.saldo_numeros)} ). El valor de la cuota pactada es de #{@person.cuota_letras} PESOS M/CTE. ( #{convert_num(@person.cuota_numeros)} ).Se toma en cuenta como último descuento a favor de la Cooperativa la cuota del mes de #{@person.ultimo_descuento.upcase}.", :align => :justify, size: 10)
       end
            pad_top(30) do
              text("Esta certificación tiene vigencia hasta el #{@person.fecha_vencimiento.day} del mes #{numero_mes(@person.fecha_vencimiento.month)} de #{@person.fecha_vencimiento.year}.", :align => :justify, size: 10)
@@ -68,8 +68,9 @@ class FactoryPDF < Prawn::Document
   end
 
   def fin
-    bounding_box([0,250], :width => 490, :height => 200) do
-      pad_bottom(10) do
+    bounding_box([0,260], :width => 490, :height => 200) do
+      text "Banco autorizado para el pago: BANCO DE BOGOTA"
+      pad(10) do
         text "ENVIAR LA CONSIGNACION O TRANSFERENCIA AL TELEFAX 3375394 Bogotá. Para tramitar el respectivo paz y salvo"
       end
       pad_top(40) do

@@ -9,7 +9,7 @@ class FactoryPDF < Prawn::Document
     @time = Time.now
     # stroke_axis
     bounding_box([0, 730], :width => 535, :height => 70) do
-      image "#{Rails.root}/app/assets/images/cooperas/Encabezado.png", width: 535, height: 70
+      image "#{Rails.root}/app/assets/images/cooperas/Encabezado.png", width: 535, height: 70 if @person.clase_cooperativa.downcase == "cooperas"
     end
     bounding_box([20, 730], :width => 490, :height => 730) do
       titulo
@@ -20,7 +20,7 @@ class FactoryPDF < Prawn::Document
       fin
     end
     bounding_box([0, 35], :width => 535, :height => 35) do
-      image "#{Rails.root}/app/assets/images/cooperas/Pie_de_pagina.png", width: 535, height: 35
+      image "#{Rails.root}/app/assets/images/cooperas/Pie_de_pagina.png", width: 535, height: 35 if @person.clase_cooperativa.downcase == "cooperas"
     end
   end
 
@@ -49,7 +49,8 @@ class FactoryPDF < Prawn::Document
 
   def barcode
     params = {}
-    params[:no_libranza] = person.no_libranza.to_s
+    params[:codigo_empresa] = (person.clase_cooperativa.downcase == "cooperas") ? '7709998263833' : '7709998716858' # Cooperas = 7709998263833
+    params[:no_libranza] = person.no_libranza.to_s                                                                  # As Tv = 7709998716858
     params[:saldo_numeros] = person.saldo_numeros.to_s
     params[:anno] = person.fecha_vencimiento.year.to_s
     params[:mes] = (person.fecha_vencimiento.month < 10 ) ? "0#{person.fecha_vencimiento.month}" : person.fecha_vencimiento.month.to_s

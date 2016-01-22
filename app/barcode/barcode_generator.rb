@@ -17,7 +17,7 @@ class BarcodeGenerator < Barby::GS1128
   attr_reader :code_text
   def initialize(params)
     @codigo_ean = '415'
-    @gs1_indentifier = '7709998263833'#'77071769660178' # Codigo unico de la empresa
+    @gs1_indentifier = params[:codigo_empresa]#'77071769660178' # Codigo unico de la empresa
     @codigo_ia = '8020'
     @referencia_de_pago = ((params[:no_libranza].length % 2) == 0) ? params[:no_libranza] : "0#{params[:no_libranza]}"#"22516572"
     # FNC1

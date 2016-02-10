@@ -17,7 +17,8 @@ class CertificatesController < ApplicationController
     puts "------------------------------------"
     puts @certificate.inspect
     puts "------------------------------------"
-    pdf = FactoryPDF.new(@certificate)
+    membrete = (params.has_key?(:membrete)) ? true : false
+    pdf = FactoryPDF.new(@certificate,membrete)
     send_data pdf.render, filename: "Certificado(#{@certificate.no_libranza}) #{@certificate.nombre} (#{Time.now.year}-#{Time.now.month}-#{Time.now.day}).pdf", type: 'application/pdf'
   end
 

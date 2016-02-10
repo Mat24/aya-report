@@ -3,13 +3,15 @@ class FactoryPDF < Prawn::Document
   include ActionView::Helpers::NumberHelper
   attr_accessor :person
   attr_accessor :time
-  def initialize(certificate_data)
+  def initialize(certificate_data,membrete)
     super()
     @person = certificate_data
     @time = Time.now
     # stroke_axis
-    bounding_box([0, 730], :width => 535, :height => 70) do
-      image "#{Rails.root}/app/assets/images/cooperas/Encabezado.png", width: 535, height: 70 if @person.clase_cooperativa.downcase == "cooperas"
+    if membrete
+      bounding_box([0, 730], :width => 535, :height => 70) do
+        image "#{Rails.root}/app/assets/images/cooperas/Encabezado.png", width: 535, height: 70 if @person.clase_cooperativa.downcase == "cooperas"
+      end
     end
     bounding_box([20, 730], :width => 490, :height => 730) do
       titulo
@@ -19,8 +21,10 @@ class FactoryPDF < Prawn::Document
       barcode
       fin
     end
-    bounding_box([0, 35], :width => 535, :height => 35) do
-      image "#{Rails.root}/app/assets/images/cooperas/Pie_de_pagina.png", width: 535, height: 35 if @person.clase_cooperativa.downcase == "cooperas"
+    if membrete
+      bounding_box([0, 35], :width => 535, :height => 35) do
+        image "#{Rails.root}/app/assets/images/cooperas/Pie_de_pagina.png", width: 535, height: 35 if @person.clase_cooperativa.downcase == "cooperas"
+      end
     end
   end
 

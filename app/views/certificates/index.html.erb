@@ -21,7 +21,7 @@
             <th>Cuotas de</th>
             <th>Cooperativa</th>
             <th>Fecha vencimiento</th>
-            <th colspan="4">Acciones</th>
+            <th colspan="5">Acciones</th>
           </tr>
           </thead>
 
@@ -37,6 +37,7 @@
                 <td><%= certificate.clase_cooperativa %></td>
                 <td><%= certificate.fecha_vencimiento %></td>
                 <td><%= link_to 'PDF', pdf_report_path(certificate) %></td>
+                <td><%= link_to 'PDF Membrete', pdf_report_path(certificate, membrete: true) %></td>
                 <td><%= link_to 'Mostrar', certificate %></td>
                 <td><%= link_to 'Editar', edit_certificate_path(certificate) %></td>
                 <td><%= link_to 'Eliminar', certificate, method: :delete, data: {confirm: 'Esta seguro?'} %></td>

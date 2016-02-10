@@ -52,4 +52,5 @@
 
 <%= link_to 'PDF', pdf_report_path(@certificate)%> |
 <%= link_to 'Editar', edit_certificate_path(@certificate) %> |
-<%= link_to 'Regresar', certificates_path %>
+<%= link_to 'Regresar', certificates_path %> |
+<%= link_to 'Eliminar', certificate, method: :delete, data: {confirm: 'Esta seguro?'} %>

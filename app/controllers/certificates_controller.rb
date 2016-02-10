@@ -4,7 +4,7 @@ class CertificatesController < ApplicationController
   # GET /certificates
   # GET /certificates.json
   def index
-    @certificates = Certificate.all
+    @certificates = Certificate.all.page(params[:page]).per(6)
   end
 
   # GET /certificates/1
@@ -14,9 +14,6 @@ class CertificatesController < ApplicationController
 
   # GET /certificates/:id
   def generate_pdf
-    puts "------------------------------------"
-    puts @certificate.inspect
-    puts "------------------------------------"
     membrete = (params.has_key?(:membrete)) ? true : false
     pdf = FactoryPDF.new(@certificate,membrete)
     send_data pdf.render, filename: "Certificado(#{@certificate.no_libranza}) #{@certificate.nombre} (#{Time.now.year}-#{Time.now.month}-#{Time.now.day}).pdf", type: 'application/pdf'

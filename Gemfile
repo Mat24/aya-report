@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Paginacion
+gem 'kaminari'
+gem 'kaminari-bootstrap'
 # Barcode Generator
 gem 'barby'
 # PDF render gem

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   resources :certificates
   # defaults to dashboard
   root :to => redirect('/dashboard/dashboard_v3')

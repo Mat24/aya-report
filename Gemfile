@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Gema de autenticacion y usuarios
+gem 'devise'
 # Paginacion
 gem 'kaminari'
 gem 'kaminari-bootstrap'

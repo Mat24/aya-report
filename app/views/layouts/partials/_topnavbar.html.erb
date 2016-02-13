@@ -40,6 +40,62 @@
       <!-- END Left navbar-->
       <!-- START Right Navbar-->
       <ul class="nav navbar-nav navbar-right">
+        <!--Acciones usuario-->
+        <!-- START Alert menu-->
+        <li class="dropdown dropdown-list">
+          <a href="#" data-toggle="dropdown">
+            <em class="icon-user"></em>
+          </a>
+          <!-- START Dropdown menu-->
+          <ul class="dropdown-menu animated flipInX">
+            <li>
+              <!-- START list group-->
+              <div class="list-group">
+                <!-- list item-->
+                <%= link_to destroy_user_session_path, method: :delete, class: "list-group-item" do %>
+                    <!--<a href="#" class="list-group-item">-->
+                    <div class="media-box">
+                      <div class="pull-left">
+                        <em class="fa fa-sign-out fa-2x text-info"></em>
+                      </div>
+                      <div class="media-box-body clearfix">
+                        <p class="m0">Salir</p>
+                        <p class="m0 text-muted">
+                          <small>Cerrar Sesion</small>
+                        </p>
+                      </div>
+                    </div>
+                    <!--</a>-->
+                <% end  %>
+
+                <!-- list item-->
+                <%= link_to edit_user_password_path, class: "list-group-item" do %>
+                  <div class="media-box">
+                    <div class="pull-left">
+                      <em class="fa fa-user fa-2x text-warning"></em>
+                    </div>
+                    <div class="media-box-body clearfix">
+                      <p class="m0">Perfil</p>
+                      <p class="m0 text-muted">
+                        <small>Editar mi perfil</small>
+                      </p>
+                    </div>
+                  </div>
+                <% end  %>
+              </div>
+              <!-- END list group-->
+            </li>
+          </ul>
+          <!-- END Dropdown menu-->
+        </li>
+        <!-- END Alert menu-->
+        <!-- START Contacts button-->
+        <!--<li>-->
+          <!--<a href="#" data-toggle-state="offsidebar-open" data-no-persist="true">-->
+            <!--<em class="icon-notebook"></em>-->
+          <!--</a>-->
+        <!--</li>-->
+        <!-- END Contacts menu-->
          <!-- Search icon-->
          <li>
             <a href="#" data-search-open="">

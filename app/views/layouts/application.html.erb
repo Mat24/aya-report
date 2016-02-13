@@ -17,31 +17,40 @@
 </head>
 
 <body>
-   <div class="wrapper">
+    <% if current_user %>
+      <div class="wrapper">
       <!-- top navbar-->
       <header class="topnavbar-wrapper">
-         <%= render partial: "layouts/partials/topnavbar" %>
+        <%= render partial: "layouts/partials/topnavbar" %>
       </header>
       <!-- sidebar-->
       <aside class="aside">
-         <%= render partial: "layouts/partials/sidebar" %>
+        <%= render partial: "layouts/partials/sidebar" %>
       </aside>
       <!-- offsidebar-->
       <aside class="offsidebar">
-         <%= render partial: "layouts/partials/offsidebar" %>
+        <%= render partial: "layouts/partials/offsidebar" %>
       </aside>
       <!-- Main section-->
       <section>
-         <!-- Page content-->
-         <div class="content-wrapper">
-            <%= yield %>
-         </div>
+        <!-- Page content-->
+        <div class="content-wrapper">
+          <%= yield %>
+        </div>
       </section>
       <!-- Page footer-->
       <footer>
-         <%= render partial: "layouts/partials/footer" %>
+        <%= render partial: "layouts/partials/footer" %>
       </footer>
-   </div>
+    </div>
+    <% else %>
+      <div class="wrapper">
+        <div class="block-center  mt-xl wd-xl">
+          <%= yield %>
+        </div>
+      </div>
+    <% end %>
+
    <!-- =============== VENDOR SCRIPTS ===============-->
    <%= javascript_include_tag 'base' %>
    <!-- =============== VIEW VENDOR SCRIPTS ===============-->

@@ -31,8 +31,8 @@
                   <td><%= certificate.cedula %></td>
                   <td><%= certificate.pagaduria %></td>
                   <td><%= certificate.no_libranza %></td>
-                  <td><%= certificate.saldo_numeros %></td>
-                  <td><%= certificate.cuota_numeros %></td>
+                  <td><%= number_to_currency(certificate.saldo_numeros, precision: 0) %></td>
+                  <td><%= number_to_currency(certificate.cuota_numeros, precision: 0) %></td>
                   <td><%= certificate.clase_cooperativa %></td>
                   <td><%= certificate.fecha_vencimiento %></td>
                   <td><%= link_to 'PDF', pdf_report_path(certificate) %></td>

@@ -4,7 +4,7 @@ class CertificatesController < ApplicationController
   # GET /certificates
   # GET /certificates.json
   def index
-    @certificates = Certificate.all.page(params[:page]).per(6)
+    @certificates = Certificate.all.order("created_at DESC").page(params[:page]).per(6)
   end
 
   # GET /certificates/1

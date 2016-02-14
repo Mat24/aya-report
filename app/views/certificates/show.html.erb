@@ -56,7 +56,7 @@
 
         <p>
           <strong>Saldo numeros:</strong>
-          <%= @certificate.saldo_numeros %>
+          <%= number_to_currency(@certificate.saldo_numeros, precision: 0) %>
         </p>
 
         <p>
@@ -66,7 +66,7 @@
 
         <p>
           <strong>Cuota numeros:</strong>
-          <%= @certificate.cuota_numeros %>
+          <%= number_to_currency(@certificate.cuota_numeros, precision: 0) %>
         </p>
 
       </div>
@@ -92,8 +92,45 @@
     <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading"><h3 class="panel-title">EXPORTAR</h3></div>
-        <div class="panel-body">
-          <%= link_to 'PDF', pdf_report_path(@certificate)%>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel-body">
+              <div class="col-sm-6">
+                <%= link_to pdf_report_path(@certificate), class: "list-group-item" do %>
+                    <!--<a href="#" class="list-group-item">-->
+                    <div class="media-box">
+                      <div class="pull-left">
+                        <em class="fa fa-file-pdf-o fa-2x text-info"></em>
+                      </div>
+                      <div class="media-box-body clearfix">
+                        <p class="m0">PDF</p>
+                        <p class="m0 text-muted">
+                          <small>SIN MEMBRETE</small>
+                        </p>
+                      </div>
+                    </div>
+                    <!--</a>-->
+                <% end  %>
+              </div>
+              <div class="col-sm-6">
+                <%= link_to pdf_report_path(@certificate, membrete: true), class: "list-group-item" do %>
+                    <!--<a href="#" class="list-group-item">-->
+                    <div class="media-box">
+                      <div class="pull-left">
+                        <em class="fa fa-file-pdf-o fa-2x text-info"></em>
+                      </div>
+                      <div class="media-box-body clearfix">
+                        <p class="m0">PDF</p>
+                        <p class="m0 text-muted">
+                          <small>CON MEMBRETE</small>
+                        </p>
+                      </div>
+                    </div>
+                    <!--</a>-->
+                <% end  %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -109,7 +146,6 @@
   </div>
   <!--fin col navegacion -->
 </div>
-
 
 
 

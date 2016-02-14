@@ -1,63 +1,86 @@
+
 <%= form_for(@certificate) do |f| %>
-  <% if @certificate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@certificate.errors.count, "error") %> prohibited this certificate from being saved:</h2>
+    <% if @certificate.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@certificate.errors.count, "error") %> prohibited this certificate from being saved:</h2>
 
-      <ul>
-      <% @certificate.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @certificate.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title">DATOS BASICOS</h3></div>
+        <div class="panel-body">
+          <div class="form-group">
+            <%= f.label :nombre %><br>
+            <%= f.text_field :nombre, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :cedula %><br>
+            <%= f.text_field :cedula, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :pagaduria %><br>
+            <%= f.text_field :pagaduria, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :no_libranza %><br>
+            <%= f.number_field :no_libranza, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.radio_button :clase_cooperativa, 'cooperas', :checked => true %>
+            <%= label :clase_cooperativa_cooperas, 'Cooperas' %>
+            <%= f.radio_button :clase_cooperativa, 'astv' %>
+            <%= label :clase_cooperativa_astv, 'Astv' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :fecha_vencimiento %><br>
+            <%= f.date_select :fecha_vencimiento %>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title">DATOS DE PAGO</h3></div>
+        <div class="panel-body">
+          <div class="form-group">
+            <%= f.label :saldo_letras %><br>
+            <%= f.text_field :saldo_letras, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :saldo_numeros %><br>
+            <%= f.number_field :saldo_numeros, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :cuota_letras %><br>
+            <%= f.text_field :cuota_letras, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :cuota_numeros %><br>
+            <%= f.number_field :cuota_numeros, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :ultimo_descuento %><br>
+            <%= f.text_field :ultimo_descuento, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--col de acciones-->
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title">ACCIONES</h3></div>
+        <div class="panel-body">
+          <div class="actions">
+            <%= f.submit class: "mb-sm btn btn-success"%>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
-  </div>
-  <div class="field">
-    <%= f.label :cedula %><br>
-    <%= f.text_field :cedula %>
-  </div>
-  <div class="field">
-    <%= f.label :pagaduria %><br>
-    <%= f.text_field :pagaduria %>
-  </div>
-  <div class="field">
-    <%= f.label :no_libranza %><br>
-    <%= f.number_field :no_libranza %>
-  </div>
-  <div class="field">
-    <%= f.label :saldo_letras %><br>
-    <%= f.text_field :saldo_letras %>
-  </div>
-  <div class="field">
-    <%= f.label :saldo_numeros %><br>
-    <%= f.number_field :saldo_numeros %>
-  </div>
-  <div class="field">
-    <%= f.label :cuota_letras %><br>
-    <%= f.text_field :cuota_letras %>
-  </div>
-  <div class="field">
-    <%= f.label :cuota_numeros %><br>
-    <%= f.number_field :cuota_numeros %>
-  </div>
-  <div class="field">
-    <%= f.label :ultimo_descuento %><br>
-    <%= f.text_field :ultimo_descuento %>
-  </div>
-  <div class="field">
-    <%= f.radio_button :clase_cooperativa, 'cooperas', :checked => true %>
-    <%= label :clase_cooperativa_cooperas, 'Cooperas' %>
-    <%= f.radio_button :clase_cooperativa, 'astv' %>
-    <%= label :clase_cooperativa_astv, 'Astv' %>
-  </div>
-  <div class="field">
-    <%= f.label :fecha_vencimiento %><br>
-    <%= f.date_select :fecha_vencimiento %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

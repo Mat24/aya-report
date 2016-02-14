@@ -1,56 +1,115 @@
-<p id="notice"><%= notice %></p>
+<h3>
+  Certificado en detalle
+  <small>Libranza #<%= @certificate.no_libranza %></small>
+</h3>
+<div class="row">
+  <div class="col-sm-12">
+    <p id="notice"><%= notice %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">DATOS BASICOS</h3></div>
+      <div class="panel-body">
+        <p>
+          <strong>Nombre:</strong>
+          <%= @certificate.nombre %>
+        </p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @certificate.nombre %>
-</p>
+        <p>
+          <strong>Cedula:</strong>
+          <%= @certificate.cedula %>
+        </p>
 
-<p>
-  <strong>Cedula:</strong>
-  <%= @certificate.cedula %>
-</p>
+        <p>
+          <strong>Pagaduria:</strong>
+          <%= @certificate.pagaduria %>
+        </p>
 
-<p>
-  <strong>Pagaduria:</strong>
-  <%= @certificate.pagaduria %>
-</p>
+        <p>
+          <strong>No libranza:</strong>
+          <%= @certificate.no_libranza %>
+        </p>
 
-<p>
-  <strong>No libranza:</strong>
-  <%= @certificate.no_libranza %>
-</p>
+        <p>
+          <strong>Clase cooperativa:</strong>
+          <%= @certificate.clase_cooperativa %>
+        </p>
 
-<p>
-  <strong>Saldo letras:</strong>
-  <%= @certificate.saldo_letras %>
-</p>
+        <p>
+          <strong>Fecha vencimiento:</strong>
+          <%= @certificate.fecha_vencimiento %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!--Segunda columna datos de pago-->
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">DATOS DE PAGO</h3></div>
+      <div class="panel-body">
+        <p>
+          <strong>Saldo letras:</strong>
+          <%= @certificate.saldo_letras %>
+        </p>
 
-<p>
-  <strong>Saldo numeros:</strong>
-  <%= @certificate.saldo_numeros %>
-</p>
+        <p>
+          <strong>Saldo numeros:</strong>
+          <%= @certificate.saldo_numeros %>
+        </p>
 
-<p>
-  <strong>Cuota letras:</strong>
-  <%= @certificate.cuota_letras %>
-</p>
+        <p>
+          <strong>Cuota letras:</strong>
+          <%= @certificate.cuota_letras %>
+        </p>
 
-<p>
-  <strong>Cuota numeros:</strong>
-  <%= @certificate.cuota_numeros %>
-</p>
+        <p>
+          <strong>Cuota numeros:</strong>
+          <%= @certificate.cuota_numeros %>
+        </p>
 
-<p>
-  <strong>Clase cooperativa:</strong>
-  <%= @certificate.clase_cooperativa %>
-</p>
+      </div>
+    </div>
+  </div>
+  <!--fin segunda columna-->
+</div>
+<div class="row">
+  <!--inicio zona acciones-->
 
-<p>
-  <strong>Fecha vencimiento:</strong>
-  <%= @certificate.fecha_vencimiento %>
-</p>
+    <!--col Acciones -->
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title">ACCIONES</h3></div>
+        <div class="panel-body">
+          <%= link_to 'Editar', edit_certificate_path(@certificate), class: "mb-sm btn btn-success" %>
+          <%= link_to 'Eliminar', @certificate, method: :delete, data: {confirm: 'Esta seguro?'}, class: "mb-sm btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+    <!--fin col Acciones-->
+    <!--col exportar-->
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title">EXPORTAR</h3></div>
+        <div class="panel-body">
+          <%= link_to 'PDF', pdf_report_path(@certificate)%>
+        </div>
+      </div>
+    </div>
+  <!--fin col exportar -->
+  <!--col navegacion-->
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">NAVEGACION</h3></div>
+      <div class="panel-body">
+        <%= link_to 'Regresar', certificates_path, class: "mb-sm btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <!--fin col navegacion -->
+</div>
 
-<%= link_to 'PDF', pdf_report_path(@certificate)%> |
-<%= link_to 'Editar', edit_certificate_path(@certificate) %> |
-<%= link_to 'Regresar', certificates_path %> |
-<%= link_to 'Eliminar', @certificate, method: :delete, data: {confirm: 'Esta seguro?'} %>
+
+
+

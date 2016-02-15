@@ -21,21 +21,23 @@ module UtilsHelper
       @flag = 0
     end
 
-    # private
+    private
     def unidad(numero)
       case numero
-        when 9 then "nueve"
-        when 8 then "ocho"
-        when 7 then "siete"
-        when 6 then "seis"
-        when 5 then "cinco"
-        when 4 then "cuatro"
-        when 3 then "tres"
-        when 2 then "dos"
-        when 1 then (@flag == 0) ? "uno" : "un"
-        when 0 then ""
-        else ""
+        when 9 then @num = "nueve"
+        when 8 then @num = "ocho"
+        when 7 then @num = "siete"
+        when 6 then @num = "seis"
+        when 5 then @num = "cinco"
+        when 4 then @num = "cuatro"
+        when 3 then @num = "tres"
+        when 2 then @num = "dos"
+        when 1 then @num = (@flag == 0) ? "uno" : "un"
+        when 0 then @num = ""
+        else @num = ""
       end
+      @flag = 0
+      @num
     end
 
     def decena(numero)
@@ -164,8 +166,24 @@ module UtilsHelper
       @num_letramm = cien_miles(numero) if ( numero < 1000000)
       @num_letramm
     end
+
+    def dec_millon(numero)
+      @num_letradmm = "diez millones" if ( numero == 10000000 )
+      if numero > 10000000 and numero < 20000000
+        @flag = 1
+        @num_letradmm = decena( numero / 1000000 ).concat("millones ").concat( cien_miles( numero % 1000000 ) )
+      end
+      if numero >= 20000000 and numero < 100000000
+        @flag = 1
+        @num_letradmm = decena( numero / 1000000 ).concat(" millones ").concat( millon( numero % 1000000 ) )
+      end
+      @num_letradmm = millon(numero) if ( numero < 10000000 )
+      @num_letradmm
+    end
+
+    public
+    def compilar_numero(numero)
+      dec_millon(numero)
+    end
   end
-
-
-
 end

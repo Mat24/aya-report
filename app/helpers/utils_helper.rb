@@ -115,5 +115,57 @@ module UtilsHelper
       end
       @num_letra
     end
+
+    def miles(numero)
+      case numero
+        when (1000...2000) then
+          @num_letram = "mil ".concat( centena( numero % 1000 ))
+        when (2000...10000) then
+          @flag = 1
+          @num_letram = unidad( numero / 1000 ).concat(" mil ").concat( centena( numero % 1000 ))
+      end
+      @num_letram = centena( numero ) if ( numero < 1000 )
+      @num_letram
+    end
+
+    def dec_miles(numero)
+      @num_letradm = "diez mil" if (numero == 10000 )
+      if numero > 10000 and numero < 20000
+        @flag = 1
+        @num_letradm = decena( numero / 1000 ).concat("mil ").concat( centena( numero % 1000 ) )
+      end
+      if numero >= 20000 and numero < 100000
+        @flag = 1
+        @num_letradm = decena( numero / 1000 ).concat(" mil ").miles( centena( numero % 1000 ) )
+      end
+      @num_letradm = miles( numero ) if ( numero < 10000 )
+      @num_letradm
+    end
+
+    def cien_miles(numero)
+      @num_letracm = "cien mil" if (numero == 100000 )
+      if numero > 100000 and numero < 1000000
+        @flag = 1
+        @num_letracm = centena( numero / 1000 ).concat(" mil ").concat( centena( numero % 1000 ) )
+      end
+      @num_letracm = dec_miles(numero) if ( numero < 100000)
+      @num_letracm
+    end
+
+    def millon(numero)
+      if numero >= 1000000 and numero < 2000000
+        @flag = 1
+        @num_letramm = "Un millon ".concat( cien_miles( numero % 1000 ) )
+      end
+      if numero >= 2000000 and numero < 10000000
+        @flag = 1
+        @num_letramm = unidad( numero / 1000000 ).concat(" millones ").concat( cien_miles( numero % 1000000 ) )
+      end
+      @num_letramm = cien_miles(numero) if ( numero < 1000000)
+      @num_letramm
+    end
   end
+
+
+
 end

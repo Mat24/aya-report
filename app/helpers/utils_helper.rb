@@ -157,7 +157,7 @@ module UtilsHelper
     def millon(numero)
       if numero >= 1000000 and numero < 2000000
         @flag = 1
-        @num_letramm = "Un millon ".concat( cien_miles( numero % 1000 ) )
+        @num_letramm = "Un millon ".concat( cien_miles( numero % 1000000 ) )
       end
       if numero >= 2000000 and numero < 10000000
         @flag = 1

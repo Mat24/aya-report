@@ -96,7 +96,7 @@ module UtilsHelper
           @num_letra = "setecientos "
           @num_letra = @num_letra.concat(decena(numero - 700)) if ( numero > 700 )
         when (600..699) then
-          @num_letra = "setecientos "
+          @num_letra = "seiscientos "
           @num_letra = @num_letra.concat(decena(numero - 600)) if ( numero > 600 )
         when (500..599) then
           @num_letra = "quinientos "
@@ -138,7 +138,7 @@ module UtilsHelper
       end
       if numero >= 20000 and numero < 100000
         @flag = 1
-        @num_letradm = decena( numero / 1000 ).concat(" mil ").miles( centena( numero % 1000 ) )
+        @num_letradm = decena( numero / 1000 ).concat(" mil ").concat( miles( numero % 1000 ) )
       end
       @num_letradm = miles( numero ) if ( numero < 10000 )
       @num_letradm

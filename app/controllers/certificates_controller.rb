@@ -35,7 +35,7 @@ class CertificatesController < ApplicationController
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to @certificate, notice: 'Certificate was successfully created.' }
+        format.html { redirect_to @certificate, notice: 'Certificado creado exitosamente.' }
         format.json { render :show, status: :created, location: @certificate }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class CertificatesController < ApplicationController
   def update
     respond_to do |format|
       if @certificate.update(certificate_params)
-        format.html { redirect_to @certificate, notice: 'Certificate was successfully updated.' }
+        format.html { redirect_to @certificate, notice: 'Certificado actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @certificate }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class CertificatesController < ApplicationController
   def destroy
     @certificate.destroy
     respond_to do |format|
-      format.html { redirect_to certificates_url, notice: 'Certificate was successfully destroyed.' }
+      format.html { redirect_to certificates_url, notice: 'Certificado eliminado exitosamente' }
       format.json { head :no_content }
     end
   end
@@ -76,6 +76,6 @@ class CertificatesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def certificate_params
-    params.require(:certificate).permit(:nombre, :cedula, :pagaduria, :no_libranza, :saldo_letras, :saldo_numeros, :cuota_letras, :cuota_numeros, :fecha_vencimiento, :clase_cooperativa, :ultimo_descuento)
+    params.require(:certificate).permit(:nombre, :cedula, :pagaduria, :no_libranza, :saldo_numeros, :cuota_numeros, :fecha_vencimiento, :clase_cooperativa, :ultimo_descuento)
   end
 end

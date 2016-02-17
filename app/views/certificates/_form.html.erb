@@ -1,14 +1,18 @@
 
 <%= form_for(@certificate) do |f| %>
     <% if @certificate.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@certificate.errors.count, "error") %> prohibited this certificate from being saved:</h2>
-
-          <ul>
-            <% @certificate.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+        <div class="col-sm-12">
+          <div id="error_explanation" role="alert" class="alert alert-danger alert-dismissible fade in">
+            <button type="button" data-dissmis="alert" aria-label="close" class="close">
+              <span aria-hidden="true">x</span>
+            </button>
+            <strong> Error al intentar guardar este certificado, verifique que:</strong>
+            <ul>
+              <% @certificate.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
     <% end %>
     <div class="col-sm-6">
@@ -48,18 +52,12 @@
       <div class="panel panel-default">
         <div class="panel-heading"><h3 class="panel-title">DATOS DE PAGO</h3></div>
         <div class="panel-body">
-          <div class="form-group">
-            <%= f.label :saldo_letras %><br>
-            <%= f.text_field :saldo_letras, class: "form-control" %>
-          </div>
+
           <div class="form-group">
             <%= f.label :saldo_numeros %><br>
             <%= f.number_field :saldo_numeros, class: "form-control" %>
           </div>
-          <div class="form-group">
-            <%= f.label :cuota_letras %><br>
-            <%= f.text_field :cuota_letras, class: "form-control" %>
-          </div>
+
           <div class="form-group">
             <%= f.label :cuota_numeros %><br>
             <%= f.number_field :cuota_numeros, class: "form-control" %>
